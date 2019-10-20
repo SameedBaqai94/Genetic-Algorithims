@@ -5,7 +5,7 @@ import random
 import math
 
 def new_char():
-    c=int(random.uniform(63,122))
+    c=int(random.randrange(62,122))
     if c==63: c=32
     if c==64: c=46
 

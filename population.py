@@ -20,7 +20,7 @@ class Population:
         for i in range(num):
             self.population.insert(i,Indivisual_DNA(len(self.target)))
         self.mating_pool=[]
-        self.calc_fitness
+        self.calc_fitness()
 
     def calc_fitness(self):
         for i in range(len(self.population)):
@@ -41,7 +41,7 @@ class Population:
 
         for j in range(len(self.population)):
             fitness=self.maps(self.population[j].fitness,0,max_fitness,0,1)
-            n=float(fitness*100)  
+            n=fitness*100  
             for h in range(int(n)):
                 self.mating_pool.append(self.population[j])
 
@@ -69,7 +69,7 @@ class Population:
                 record=self.population[i].fitness
         
         self.best=self.population[index].get_pharse()
-        if record==self.perfect_score:
+        if record==self.perfect_score:            
             self.finished=True
 
     def is_finished(self):
