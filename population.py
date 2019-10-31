@@ -5,27 +5,20 @@ import random
 
 class Population:
 
-    def __init__(self,target,mut_rate,num):
-        self.population=None
-        self.mating_pool=None
-        self.generations=0
-        self.finished=False
-        self.target=target
-        self.mut_rate=mut_rate
-        self.perfect_score=1
+    def __init__(self,pop_len,dna_len):
 
-        self.best=""
 
         self.population=[]
-        for i in range(num):
-            self.population.insert(i,Indivisual_DNA(len(self.target)))
-        self.mating_pool=[]
-        self.calc_fitness()
+        self.pop_fitness=0
+        self.dna_len=dna_len
+            
+        for i in range(pop_len):
+            self.population.insert(i,Indivisual_DNA(dna_len))
 
-    def calc_fitness(self):
-        for i in range(len(self.population)):
-            self.population[i].calc_fitness(self.target)
-    
+    #def calc_fitness(self):
+        #for i in range(len(self.population)):
+            #self.population[i].calc_fitness(self.target)
+"""    
     def maps(self,n,start1,stop1,start2,stop2):
         new_value=((n-start1)/(stop1-start1))*(stop2-start2)+start2
         return new_value
@@ -92,3 +85,4 @@ class Population:
             everything +=self.population[i].get_pharse()
 
         return everything
+"""
