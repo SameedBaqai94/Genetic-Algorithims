@@ -2,13 +2,16 @@
 
 from population import Population
 
+ENCRYPTED= "mvazmjlgwzlfdqgmjltikshkrblapwegmshxlrniuychdmzwwfv"
+
 TOTAL_POP=500
 TOTAL_GEN=100
 CROSSOVER_RATE=.9
 MUTATION_RATE=0.1
 
 if __name__=="__main__":
-    population=Population(500,26)
+    population=Population(500,26,ENCRYPTED)
+    population.calc_fitness()
 """    while population.is_finished()==False:
         population.natural_selection()
         population.generate()
