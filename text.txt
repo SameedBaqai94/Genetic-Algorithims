@@ -1,2 +1,27 @@
-[109, 118, 97, 122, 109, 106, 108, 103, 119, 122, 108, 102, 100, 113, ...]
-[12, 21, 0, 25, 12, 9, 11, 6, 22, 25, 11, 5, 3, 16, ...]
+        expectedFrequencies =[]
+        expectedFrequencies.append(0.085) #Expected frequency of a
+        expectedFrequencies.append(0.016) #Expected frequency of b
+        expectedFrequencies.append(0.0316) #Expected frequency of c
+        expectedFrequencies.append(0.0387) #Expected frequency of d
+        expectedFrequencies.append(0.121) #Expected frequency of e
+        expectedFrequencies.append(0.0218) #Expected frequency of f
+        expectedFrequencies.append(0.0209) #Expected frequency of g
+        expectedFrequencies.append(0.0496) #Expected frequency of h
+        expectedFrequencies.append(0.0733) #Expected frequency of i
+        expectedFrequencies.append(0.0022) #Expected frequency of j
+        expectedFrequencies.append(0.0081) #Expected frequency of k
+        expectedFrequencies.append(0.0421) #Expected frequency of l
+        expectedFrequencies.append(0.0253) #Expected frequency of m
+        expectedFrequencies.append(0.0717) #Expected frequency of n
+        expectedFrequencies.append(0.0747) #Expected frequency of o
+        expectedFrequencies.append(0.0207) #Expected frequency of p
+        expectedFrequencies.append(0.001) #Expected frequency of q
+        expectedFrequencies.append(0.0633) #Expected frequency of r
+        expectedFrequencies.append(0.0673) #Expected frequency of s
+        expectedFrequencies.append(0.0894) #Expected frequency of t
+        expectedFrequencies.append(0.0268) #Expected frequency of u
+        expectedFrequencies.append(0.0106) #Expected frequency of v
+        expectedFrequencies.append(0.0183) #Expected frequency of w
+        expectedFrequencies.append(0.0019) #Expected frequency of x
+        expectedFrequencies.append(0.0172) #Expected frequency of y
+        expectedFrequencies.append(0.0011) #Expected frequency of z

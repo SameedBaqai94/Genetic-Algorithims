@@ -9,7 +9,6 @@ def new_char():
     c=int(random.random() * 26+97)
 
     return str(unichr(c))
-
 def split(word):
     return[ord(char) for char in word]
 
@@ -24,34 +23,34 @@ class Indivisual_DNA:
         
 
     def fitnesses(self,k, c):
-        expectedFrequencies = []
-        expectedFrequencies.append(0.0085)
-        expectedFrequencies.append(0.0016)
-        expectedFrequencies.append(0.0316)
-        expectedFrequencies.append(0.0387)
-        expectedFrequencies.append(0.0021)
-        expectedFrequencies.append(0.0218)
-        expectedFrequencies.append(0.0209)
-        expectedFrequencies.append(0.0041)
-        expectedFrequencies.append(0.0496)
-        expectedFrequencies.append(0.0770)
-        expectedFrequencies.append(0.0773)
-        expectedFrequencies.append(0.0022)
-        expectedFrequencies.append(0.0099)
-        expectedFrequencies.append(0.0747)
-        expectedFrequencies.append(0.0085)
-        expectedFrequencies.append(0.0988)
-        expectedFrequencies.append(0.0023)
-        expectedFrequencies.append(0.0035)
-        expectedFrequencies.append(0.0354)
-        expectedFrequencies.append(0.0054)
-        expectedFrequencies.append(0.0067)
-        expectedFrequencies.append(0.0087)
-        expectedFrequencies.append(0.0005)
-        expectedFrequencies.append(0.0098)
-        expectedFrequencies.append(0.0067)
-        expectedFrequencies.append(0.0024)
-        expectedFrequencies.append(0.0005)
+
+        expectedFrequencies =[]
+        expectedFrequencies.append(0.085) #Expected frequency of a
+        expectedFrequencies.append(0.016) #Expected frequency of b
+        expectedFrequencies.append(0.0316) #Expected frequency of c
+        expectedFrequencies.append(0.0387) #Expected frequency of d
+        expectedFrequencies.append(0.121) #Expected frequency of e
+        expectedFrequencies.append(0.0218) #Expected frequency of f
+        expectedFrequencies.append(0.0209) #Expected frequency of g
+        expectedFrequencies.append(0.0496) #Expected frequency of h
+        expectedFrequencies.append(0.0733) #Expected frequency of i
+        expectedFrequencies.append(0.0022) #Expected frequency of j
+        expectedFrequencies.append(0.0081) #Expected frequency of k
+        expectedFrequencies.append(0.0421) #Expected frequency of l
+        expectedFrequencies.append(0.0253) #Expected frequency of m
+        expectedFrequencies.append(0.0717) #Expected frequency of n
+        expectedFrequencies.append(0.0747) #Expected frequency of o
+        expectedFrequencies.append(0.0207) #Expected frequency of p
+        expectedFrequencies.append(0.001) #Expected frequency of q
+        expectedFrequencies.append(0.0633) #Expected frequency of r
+        expectedFrequencies.append(0.0673) #Expected frequency of s
+        expectedFrequencies.append(0.0894) #Expected frequency of t
+        expectedFrequencies.append(0.0268) #Expected frequency of u
+        expectedFrequencies.append(0.0106) #Expected frequency of v
+        expectedFrequencies.append(0.0183) #Expected frequency of w
+        expectedFrequencies.append(0.0019) #Expected frequency of x
+        expectedFrequencies.append(0.0172) #Expected frequency of y
+        expectedFrequencies.append(0.0011) #Expected frequency of z
         
         d=c.lower()
         d=re.sub(r'[^a-z]',"",d)
@@ -89,5 +88,8 @@ class Indivisual_DNA:
         
         score=0
         for l in range(len(char_counts)):
-            score =score+abs((float(char_counts[l])/len(plain)-expectedFrequencies[l])) 
+            score =score+abs((float(char_counts[l])/len(plain)-expectedFrequencies[l]) 
         return score
+
+    def genes_str(self):
+        return str(self.genes)
