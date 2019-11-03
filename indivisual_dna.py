@@ -88,7 +88,8 @@ class Indivisual_DNA:
         
         score=0
         for l in range(len(char_counts)):
-            score =score+abs((float(char_counts[l])/len(plain)-expectedFrequencies[l]) 
+            score =score+abs((float(char_counts[l])/len(plain)-expectedFrequencies[l])) 
+        
         return score
 
     def genes_str(self):
