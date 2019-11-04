@@ -162,6 +162,33 @@ class Crossover:
             children[0].genes[j]=children[1].genes[j]
             children[1].genes[j]=swap
         return children
+    
+    def uniform_order(self):
+        children=[]
+        mask=[]
+        reminder_genes=[]
+
+        for k in range(len(self.parents[0].genes)):
+            mask.append(random.random()+1)
+
+        for i in range(2):
+            children.insert(i,Indivisual_DNA(CHROMOSONE_LEN))
+
+        for h in range(len(mask)):
+            if mask[h]==1:
+                children[0].genes[h]=self.parents[0].genes[h]
+            else:
+                children[0].genes[h]=''
+        
+        for i in range(2):
+            for l in range(len(self.parents[1-i].genes)):
+                if children[i].genes!=self.parents[1-i].genes[l]:
+                    reminder_genes.append(self.parents[1-i].genes[l])
+            for k in range(len(children[i].genes)):
+                if children[i].genes[k]=='':
+                    children[i].genes[k]=reminder_genes.pop()
+        return children
+                    
 
 class Mutation:
 
@@ -170,17 +197,17 @@ class Mutation:
         self.chromosone_len=chromosone_len
     
     def inversion(self):
-        a=int(random.random()*len(self.chromosone.genes))-1
-        b=int(random.random()*len(self.chromosone.genes))-1
+        pointer_1=int(random.random()*len(self.chromosone.genes))-1
+        pointer_2=int(random.random()*len(self.chromosone.genes))-1
 
-        strt=min(a,b)
-        end=max(a,b)
-
+        minimun_value=min(pointer_1,pointer_2)
+        maximum_value=max(pointer_1,pointer_2)
+        total=minimun_value-maximum_value
         stack=[]
-        for i in range(end-strt):
-            stack.append(self.chromosone.genes[strt+i])
-        for j in range(end-strt):
-            self.chromosone.genes[strt+j]=stack.pop()
+        for i in range(total):
+            stack.append(self.chromosone.genes[minimun_value+i])
+        for j in range(total):
+            self.chromosone.genes[minimun_value+j]=stack.pop()
 
 
 class Population:
@@ -204,7 +231,7 @@ class Population:
         avg_fit=0
         for i in range(len(self.population)):
             self.population[i].fitness=self.population[i].fitnesses(str(self.population[i].genes),self.text)
-            avg_fit=avg_fit+self.population[i].fitness
+            avg_fit+=self.population[i].fitness
         
         self.pop_fitness=avg_fit/TOTAL_POP
     
@@ -221,7 +248,8 @@ class Population:
             crossover=Crossover(self.parents,CHROMOSONE_LEN)
 
             if random.random() < self.cross_rate:
-                children=crossover.one_point()
+                #children=crossover.one_point()
+                children=crossover.uniform_order()
                 for child in children:
                     pop_2.population.append(child)
 
@@ -265,5 +293,6 @@ if __name__=="__main__":
     print "Choromsone len: ",CHROMOSONE_LEN
     print "".join(record[0]).strip(',')
     print "Fitness: ", record[1]
+    print "Average Fitness",population.pop_fitness
     print "Decrypt: ",decrypted
 

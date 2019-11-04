@@ -1,27 +1,100 @@
-        expectedFrequencies =[]
-        expectedFrequencies.append(0.085) #Expected frequency of a
-        expectedFrequencies.append(0.016) #Expected frequency of b
-        expectedFrequencies.append(0.0316) #Expected frequency of c
-        expectedFrequencies.append(0.0387) #Expected frequency of d
-        expectedFrequencies.append(0.121) #Expected frequency of e
-        expectedFrequencies.append(0.0218) #Expected frequency of f
-        expectedFrequencies.append(0.0209) #Expected frequency of g
-        expectedFrequencies.append(0.0496) #Expected frequency of h
-        expectedFrequencies.append(0.0733) #Expected frequency of i
-        expectedFrequencies.append(0.0022) #Expected frequency of j
-        expectedFrequencies.append(0.0081) #Expected frequency of k
-        expectedFrequencies.append(0.0421) #Expected frequency of l
-        expectedFrequencies.append(0.0253) #Expected frequency of m
-        expectedFrequencies.append(0.0717) #Expected frequency of n
-        expectedFrequencies.append(0.0747) #Expected frequency of o
-        expectedFrequencies.append(0.0207) #Expected frequency of p
-        expectedFrequencies.append(0.001) #Expected frequency of q
-        expectedFrequencies.append(0.0633) #Expected frequency of r
-        expectedFrequencies.append(0.0673) #Expected frequency of s
-        expectedFrequencies.append(0.0894) #Expected frequency of t
-        expectedFrequencies.append(0.0268) #Expected frequency of u
-        expectedFrequencies.append(0.0106) #Expected frequency of v
-        expectedFrequencies.append(0.0183) #Expected frequency of w
-        expectedFrequencies.append(0.0019) #Expected frequency of x
-        expectedFrequencies.append(0.0172) #Expected frequency of y
-        expectedFrequencies.append(0.0011) #Expected frequency of z
+0.752490909091
+0.7386
+0.779872727273
+0.779545454545
+0.734709090909
+0.783545454545
+0.735545454545
+0.754454545455
+0.672618181818
+0.605
+0.817036363636
+0.757145454545
+0.781036363636
+0.817036363636
+0.742945454545
+0.785090909091
+0.668690909091
+0.755618181818
+0.749654545455
+0.748781818182
+0.699381818182
+0.691145454545
+0.705472727273
+0.817036363636
+0.788909090909
+0.800090909091
+0.817036363636
+0.771563636364
+0.817036363636
+0.788890909091
+0.781
+0.817036363636
+0.8108
+0.776472727273
+0.702054545455
+0.817036363636
+0.697490909091
+0.817036363636
+0.812890909091
+0.750872727273
+0.6812
+0.734981818182
+0.779545454545
+0.767145454545
+0.741363636364
+0.811127272727
+0.671327272727
+0.817036363636
+0.767436363636
+0.637690909091
+0.732490909091
+0.736672727273
+0.740054545455
+0.724781818182
+0.817036363636
+0.706709090909
+0.739781818182
+0.749509090909
+0.780109090909
+0.595581818182
+0.696272727273
+0.809890909091
+0.707036363636
+0.752454545455
+0.667945454545
+0.708454545455
+0.608381818182
+0.693836363636
+0.757163636364
+0.817036363636
+0.627745454545
+0.632381818182
+0.805054545455
+0.817036363636
+0.817036363636
+0.604
+0.633872727273
+0.772581818182
+0.671945454545
+0.817036363636
+0.742945454545
+0.617945454545
+0.753654545455
+0.779872727273
+0.740854545455
+0.694163636364
+0.817036363636
+0.710981818182
+0.776709090909
+0.817036363636
+0.775181818182
+0.768981818182
+0.817036363636
+0.614236363636
+0.649509090909
+0.817036363636
+0.817036363636
+0.808309090909
+0.7272
+0.610018181818
