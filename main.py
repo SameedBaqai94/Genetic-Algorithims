@@ -1,10 +1,17 @@
 #!/usr/bin/python2
+"""
+    Name:Sameed Baqai
+    Date:2019-11-02
+    SN:6560577
+"""
+
 from __future__ import division
 import math
 import re
 import copy
 import random
 
+#global values
 ENCRYPTED= ("xbwdesmhihslwhkktefvktkktcwfpiibihwmosfilojvooegvefwno"+
            "ichsuuspsureifakbnlalzsrsroiejwzgfpjczldokrceoahzshpbdw"+
            "pcjstacgbarfwifwohylckafckzwwomlalghrtafchfetcgfpfrgxc"+
@@ -16,11 +23,12 @@ CROSSOVER_RATE=None
 MUTATION_RATE=None
 CHROMOSONE_LEN=26
 
-
+#chosing a random char between 26 and 97
 def new_char():
     c=int(random.random() * 26+97)
 
     return str(unichr(c))
+#getting int of each char in list
 def split(word):
     return[ord(char) for char in word]
 
@@ -134,52 +142,58 @@ class Indivisual_DNA:
 
     def genes_str(self):
         return str(self.genes)
-
+#Selection class
 class Selection:
     
     def __init__(self,pop,chromosone_len):
         self.pop=pop
         self.chromosone_len=chromosone_len
-
+    #Tournament Selection
     def tournament(self,selected_parents,i):
+        #randomly select some population for each parent and return the min of it
         for j in range(i):
             selected_parents.append(self.pop.population[int(random.random()*len(self.pop.population)-1)])
             return min(selected_parents)
-
+#crossover class
 class Crossover:
 
     def __init__(self,parents,chromosone_len):
         self.parents=parents
         self.chromosone_len=chromosone_len
-
+    #One point crossover   
     def one_point(self):
         children=[]
+        #Create 2 genes
         for i in range(2):
             children.insert(i,Indivisual_DNA(CHROMOSONE_LEN))
-        split=int(random.random()*CHROMOSONE_LEN-1)
-        for j in range(split,CHROMOSONE_LEN):
+        #get a pointer betweem some random value to length of chromosome
+        pointer=int(random.random()*CHROMOSONE_LEN-1)
+        #swap out genes betwween some randon point to lenght of chromosome
+        for j in range(pointer,CHROMOSONE_LEN):
             swap=children[0].genes[j]
             children[0].genes[j]=children[1].genes[j]
             children[1].genes[j]=swap
         return children
-    
+    #Uniform Order    
     def uniform_order(self):
         children=[]
         mask=[]
         reminder_genes=[]
 
+        #create mask list
         for k in range(len(self.parents[0].genes)):
             mask.append(random.random()+1)
-
+        #create children list
         for i in range(2):
             children.insert(i,Indivisual_DNA(CHROMOSONE_LEN))
-
+        #if mask ==1 then add gene of first parent to first child
+        #else leave it blank
         for h in range(len(mask)):
             if mask[h]==1:
                 children[0].genes[h]=self.parents[0].genes[h]
             else:
                 children[0].genes[h]=''
-        
+        #adding the reminder frommp parent 2 if doesnt already existsof genes to child
         for i in range(2):
             for l in range(len(self.parents[1-i].genes)):
                 if children[i].genes!=self.parents[1-i].genes[l]:
@@ -189,27 +203,30 @@ class Crossover:
                     children[i].genes[k]=reminder_genes.pop()
         return children
                     
-
+#mutation classs
 class Mutation:
 
     def __init__(self,chromosone,chromosone_len):
         self.chromosone=chromosone
         self.chromosone_len=chromosone_len
-    
+    #inversion    
     def inversion(self):
+        #selecting two points and finding min max of it 
         pointer_1=int(random.random()*len(self.chromosone.genes))-1
         pointer_2=int(random.random()*len(self.chromosone.genes))-1
 
         minimun_value=min(pointer_1,pointer_2)
         maximum_value=max(pointer_1,pointer_2)
         total=minimun_value-maximum_value
-        stack=[]
+        temp=[]
         for i in range(total):
-            stack.append(self.chromosone.genes[minimun_value+i])
+            #push all genes to temp stack
+            temp.append(self.chromosone.genes[minimun_value+i])
         for j in range(total):
-            self.chromosone.genes[minimun_value+j]=stack.pop()
+            #pop them all back to chromosome genes
+            self.chromosone.genes[minimun_value+j]=temp.pop()
 
-
+#population class
 class Population:
 
     def __init__(self,pop_len,dna_len,text,cross_rate,mutation_rate):
@@ -226,7 +243,7 @@ class Population:
 
         for i in range(pop_len):
             self.population.insert(i,Indivisual_DNA(dna_len))
-
+    #does fitness caculation
     def calc_fitness(self):
         avg_fit=0
         for i in range(len(self.population)):
@@ -238,56 +255,70 @@ class Population:
     def return_parents(self):
         return self.parents
 
+    #GA operation here
     def selection(self,pop,pop_2,chromosone_len):
         
         selection=Selection(pop,chromosone_len)
 
         while len(pop_2.population) < TOTAL_POP:
-            self.parents.append(selection.tournament(self.parents,5))
-            self.parents.append(selection.tournament(self.parents,5))
+            #creating two parents
+            self.parents.append(selection.tournament(self.parents,3))
+            self.parents.append(selection.tournament(self.parents,3))
+            #applying crossover on them
             crossover=Crossover(self.parents,CHROMOSONE_LEN)
 
             if random.random() < self.cross_rate:
-                #children=crossover.one_point()
-                children=crossover.uniform_order()
+                #COMMENT OUT THE METHOD YOU WANT TO USE
+                #BOTH WORK
+                children=crossover.one_point()
+                #children=crossover.uniform_order()
+                #when crossover return children append it to new population
                 for child in children:
                     pop_2.population.append(child)
-
+            #mutation 
             if len(pop_2.population) >=2 and random.random() < self.mutation_rate:
+                #apply mutation on given random point
                 mutation=Mutation(pop_2.population[int(random.random()+len(pop_2.population)-1)],CHROMOSONE_LEN)
                 mutation.inversion()
         return pop_2.population
-
+#MAIN 
 if __name__=="__main__":
     
-    TOTAL_POP=int(input("Population Size: "))
-    TOTAL_GEN=int(input("Generations Size: "))
-    CROSSOVER_RATE=float(input("Crossover Rate: "))
-    MUTATION_RATE=float(input("Mutation Rate: "))
+    TOTAL_POP=int(input("Population Size(i.e 500): "))
+    TOTAL_GEN=int(input("Generations Size(i.e 100): "))
+    CROSSOVER_RATE=float(input("Crossover Rate in demcimal(i.e 1.0): "))
+    MUTATION_RATE=float(input("Mutation Rate in decimal(i.e 0.1): "))
     #CHROMOSONE_LEN=int(input("Chromosones Size: "))
 
+    #population instance
     population=Population(TOTAL_POP,CHROMOSONE_LEN,ENCRYPTED,CROSSOVER_RATE,MUTATION_RATE)
     population_2=None
+    #elitism
     old_pop_min,new_pop_min=None,None
     record=None
 
     for i in range(TOTAL_GEN):
         population_2=Population(0,0,ENCRYPTED,CROSSOVER_RATE,MUTATION_RATE)
         population.calc_fitness()
+        #insert population to new population
         population_2.population=population_2.selection(population,population_2,CHROMOSONE_LEN)
         population_2.pop_len=len(population_2.population)
         population_2.calc_fitness()
+        #elitism
         old_pop_min=min(population.population)
         new_pop_min=min(population_2.population)
         if new_pop_min.fitness < old_pop_min.fitness:
             old_pop_min=copy.deepcopy(new_pop_min)
         else:
+            #get the max of population2 pop and replace it
+            #with elitism
             a=max(population_2.population)
             j=population_2.population.index(a)
             population_2.population[j]=copy.deepcopy(old_pop_min)
         print old_pop_min.fitness
         old_pop_min=new_pop_min
         record=[old_pop_min.genes,old_pop_min.fitness]
+    #decrypt with whatever best fit chromosome is 
     decrypted=decrypt("".join(record[0]).strip(','),ENCRYPTED)
     print ""
     print "Choromsone len: ",CHROMOSONE_LEN
