@@ -1,7 +1,6 @@
 # Genetic-Algorithim2
 Name:Sameed Baqai
-STUDENT NUMBER:6560577
-SB18KF
+
 
 HOW TO USE IT:
 1.enter the information required 
